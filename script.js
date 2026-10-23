@@ -1,10 +1,10 @@
 
 const botaoCarta = document.getElementById("botaoCarta");
+const botaoContador = document.getElementById("botaoContador");
+const botaoVoltar = document.getElementById("botaoVoltar");
+
 const carta = document.getElementById("carta");
-
-const botaoSurpresa = document.getElementById("botaoSurpresa");
-const mensagemSecreta = document.getElementById("mensagemSecreta");
-
+const contador = document.getElementById("contador");
 const areaCoracoes = document.getElementById("coracoes");
 
 // Abrir a carta
@@ -13,50 +13,89 @@ botaoCarta.addEventListener("click", function () {
 
     botaoCarta.textContent = "Carta aberta ❤️";
     botaoCarta.disabled = true;
+
+    carta.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
 });
 
-// Mensagem secreta
-const declaracao = "Eu não sei exatamente o que o futuro reserva pra gente, mas sei que você se tornou alguém muito especial pra mim. ❤️";
+// Mostrar o contador
+botaoContador.addEventListener("click", function () {
+    contador.classList.remove("escondida");
 
-botaoSurpresa.addEventListener("click", function () {
-    mensagemSecreta.classList.remove("escondida");
+    atualizarContador();
 
-    botaoSurpresa.textContent = "Com carinho, para você ❤️";
-    botaoSurpresa.disabled = true;
+    contador.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+});
 
-    let letra = 0;
+// Voltar ao início
+botaoVoltar.addEventListener("click", function () {
+    carta.classList.add("escondida");
+    contador.classList.add("escondida");
 
-    function escrever() {
-        if (letra < declaracao.length) {
-            mensagemSecreta.textContent += declaracao.charAt(letra);
-            letra++;
+    botaoCarta.textContent = "Abrir minha carta 💌";
+    botaoCarta.disabled = false;
 
-            setTimeout(escrever, 45);
-        }
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+// Contador desde 22 de julho de 2026
+function atualizarContador() {
+    const dataEspecial = new Date(2026, 6, 22, 0, 0, 0);
+    const agora = new Date();
+
+    let diferenca = agora.getTime() - dataEspecial.getTime();
+
+    if (diferenca < 0) {
+        diferenca = 0;
     }
 
-    escrever();
-});
+    const totalSegundos = Math.floor(diferenca / 1000);
 
-// Corações flutuantes
+    const dias = Math.floor(totalSegundos / 86400);
+    const horas = Math.floor((totalSegundos % 86400) / 3600);
+    const minutos = Math.floor((totalSegundos % 3600) / 60);
+    const segundos = totalSegundos % 60;
+
+    document.getElementById("dias").textContent = dias;
+    document.getElementById("horas").textContent =
+        String(horas).padStart(2, "0");
+    document.getElementById("minutos").textContent =
+        String(minutos).padStart(2, "0");
+    document.getElementById("segundos").textContent =
+        String(segundos).padStart(2, "0");
+}
+
+// Atualizar o contador a cada segundo
+atualizarContador();
+setInterval(atualizarContador, 1000);
+
+// Criar corações flutuantes
 function criarCoracao() {
+    if (!areaCoracoes) return;
+
     const coracao = document.createElement("span");
 
+    coracao.classList.add("coracao");
     coracao.textContent = "♥";
-    coracao.style.position = "absolute";
+
     coracao.style.left = Math.random() * 100 + "%";
-    coracao.style.bottom = "-30px";
-    coracao.style.color = "#ff4fa3";
     coracao.style.fontSize = (15 + Math.random() * 20) + "px";
-    coracao.style.opacity = "0.8";
-    coracao.style.animation = "flutuar 6s linear forwards";
+    coracao.style.animationDuration = (5 + Math.random() * 4) + "s";
 
     areaCoracoes.appendChild(coracao);
 
     setTimeout(function () {
         coracao.remove();
-    }, 6000);
+    }, 9000);
 }
 
-// Criar um coração a cada meio segundo
-setInterval(criarCoracao, 500);
+// Criar um coração a cada 700 milissegundos
+setInterval(criarCoracao, 700);
