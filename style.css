@@ -1,0 +1,447 @@
+
+/* ==========================
+   1. CONFIGURAÇÕES GERAIS
+========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(circle at top, #241020, #0b080d 65%);
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 25px;
+    padding: 30px 20px;
+    overflow-x: hidden;
+}
+
+/* ==========================
+   2. CORAÇÕES FLUTUANTES
+========================== */
+
+#coracoes {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+#coracoes span {
+    pointer-events: none;
+}
+
+/* Mantém o conteúdo acima dos corações */
+main,
+#carta {
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================
+   3. TELA INICIAL
+========================== */
+
+main {
+    background: linear-gradient(145deg, #21101e, #110b13);
+    border: 1px solid #ff4fa3;
+    border-radius: 24px;
+
+    padding: 45px 35px;
+    max-width: 650px;
+    width: 100%;
+
+    text-align: center;
+
+    box-shadow:
+        0 0 20px #ff4fa322,
+        0 0 45px #ff4fa311,
+        inset 0 0 25px #ff4fa308;
+
+    animation: aparecer 1s ease;
+}
+
+/* Coração decorativo na tela inicial */
+main::before {
+    content: "♥";
+    display: block;
+
+    color: #ff4fa3;
+    font-size: 55px;
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 0 10px #ff4fa3,
+        0 0 25px #ff4fa3,
+        0 0 45px #ff4fa3;
+
+    animation: pulsar 1.5s infinite;
+}
+
+/* Título principal */
+h1 {
+    color: #ff91c9;
+    font-size: 34px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+
+    text-shadow: 0 0 15px #ff4fa344;
+}
+
+/* Textos gerais */
+p {
+    color: #f5dfed;
+    font-size: 17px;
+    line-height: 1.9;
+    margin-bottom: 25px;
+}
+
+/* ==========================
+   4. BOTÕES
+========================== */
+
+button {
+    background: linear-gradient(135deg, #ff70b8, #ff4fa3);
+    color: #1a0813;
+
+    border: 1px solid #ffb6db;
+    border-radius: 30px;
+
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    box-shadow: 0 0 15px #ff4fa344;
+}
+
+button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #ffc0e0, #ff70b8);
+
+    transform: translateY(-3px) scale(1.04);
+
+    box-shadow:
+        0 0 15px #ff4fa3,
+        0 0 30px #ff4fa366;
+}
+
+button:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+button:disabled {
+    opacity: 0.75;
+    cursor: default;
+}
+
+/* ==========================
+   5. CARTA ROMÂNTICA
+========================== */
+
+#carta {
+    background: linear-gradient(145deg, #21101e, #110b13);
+
+    border: 1px solid #ff70b8;
+    border-radius: 24px;
+
+    padding: 40px 30px;
+    max-width: 650px;
+    width: 100%;
+
+    text-align: center;
+    overflow: hidden;
+
+    box-shadow:
+        0 0 20px #ff4fa333,
+        inset 0 0 25px #ff4fa30a;
+
+    animation: aparecer 0.8s ease;
+}
+
+/* Coração dentro da carta */
+.coracao {
+    display: inline-block;
+
+    color: #ff4fa3;
+    font-size: 45px;
+    margin-bottom: 18px;
+
+    animation: pulsar 1.5s infinite;
+
+    text-shadow:
+        0 0 10px #ff4fa3,
+        0 0 25px #ff4fa3;
+}
+
+/* Subtítulo da carta */
+.subtitulo {
+    color: #ff91c9;
+    font-size: 11px;
+    letter-spacing: 4px;
+    margin-bottom: 16px;
+}
+
+/* Título da carta */
+#carta h2 {
+    color: #ff91c9;
+    font-size: 28px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+
+    text-shadow: 0 0 12px #ff4fa322;
+}
+
+/* Parágrafos da carta */
+#carta .declaracao {
+    color: #f5dfed;
+    font-size: 16px;
+    line-height: 1.9;
+    margin-bottom: 20px;
+}
+
+/* Assinatura */
+#carta .assinatura {
+    color: #ff91c9;
+    font-style: italic;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+/* ==========================
+   6. MENSAGEM SECRETA
+========================== */
+
+#mensagemSecreta {
+    color: #ffb6db;
+    font-size: 17px;
+    line-height: 1.9;
+
+    margin-top: 25px;
+    margin-bottom: 0;
+
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+
+    text-shadow: 0 0 12px #ff4fa322;
+}
+
+/* Esconde elementos até o clique */
+.escondida {
+    display: none !important;
+}
+
+/* ==========================
+   7. ANIMAÇÕES
+========================== */
+
+/* Aparecer suavemente */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Coração pulsando */
+@keyframes pulsar {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+/* Corações subindo pela tela */
+@keyframes flutuar {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+    }
+
+    to {
+        transform: translateY(-100vh) rotate(30deg);
+        opacity: 0;
+    }
+}
+
+/* ==========================
+   8. CELULARES
+========================== */
+
+@media (max-width: 480px) {
+    body {
+        padding: 20px 14px;
+        gap: 18px;
+    }
+
+    main {
+        padding: 30px 22px;
+        border-radius: 20px;
+    }
+
+    main::before {
+        font-size: 45px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+
+    #carta {
+        padding: 30px 20px;
+        border-radius: 20px;
+    }
+
+    #carta h2 {
+        font-size: 23px;
+    }
+
+    #carta .declaracao {
+        font-size: 15px;
+    }
+
+    #mensagemSecreta {
+        font-size: 15px;
+    }
+
+    button {
+        max-width: 100%;
+        padding: 14px 22px;
+    }
+}
+
+/* ==========================
+   9. ACESSIBILIDADE
+========================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Etiqueta da tela inicial */
+.etiqueta {
+    color: #ff70b8;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+    animation: aparecer 1.5s ease;
+    text-shadow: 0 0 12px #ff4fa366;
+}
+
+/* Linha rosa brilhante */
+.linha-brilhante {
+    width: 100px;
+    height: 3px;
+    margin: 0 auto 22px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #ff4fa3,
+        #ffc0e0,
+        #ff4fa3,
+        transparent
+    );
+
+    border-radius: 10px;
+
+    box-shadow: 0 0 12px #ff4fa3;
+
+    animation: brilhoLinha 2s ease-in-out infinite alternate;
+}
+
+@keyframes brilhoLinha {
+    from {
+        opacity: 0.5;
+        transform: scaleX(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scaleX(1.15);
+    }
+}
+
+
+/* Melhorias para celular */
+@media (max-width: 600px) {
+    body {
+        padding: 20px 14px;
+        gap: 20px;
+    }
+
+    main {
+        padding: 30px 20px;
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 27px;
+        line-height: 1.4;
+    }
+
+    main p {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .etiqueta {
+        font-size: 10px;
+        letter-spacing: 2px;
+        line-height: 1.7;
+    }
+
+    #carta {
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    #carta h2 {
+        font-size: 23px;
+        line-height: 1.5;
+    }
+
+    #carta .declaracao,
+    #carta .assinatura,
+    #mensagemSecreta {
+        font-size: 16px;
+        line-height: 1.8;
+        overflow-wrap: anywhere;
+    }
+
+    button {
+        min-height: 48px;
+        max-width: 100%;
+        padding: 14px 22px;
+        font-size: 16px;
+    }
+}
