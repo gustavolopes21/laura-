@@ -4,46 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Uma Surpresa Para Você ❤️</title>
-
-    <!-- Conecta o arquivo de estilos -->
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080508">
 
     <title>Para o meu amor ❤️</title>
 
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
-
 <body>
     <div id="coracoes" aria-hidden="true"></div>
 
     <main class="principal">
-        <div class="brilho">♥</div>
+        <header class="cabecalho">
+            <div class="brilho" aria-hidden="true">♥</div>
 
-        <p class="subtitulo">UM PEQUENO PRESENTE PARA VOCÊ</p>
+            <p class="subtitulo">UM PEQUENO PRESENTE PARA VOCÊ</p>
 
-        <h1>Para o meu amor</h1>
+            <h1>Para o meu amor</h1>
 
-        <p class="descricao">
-            Fiz isso especialmente para você. ❤️
-        </p>
+            <p class="descricao">
+                Fiz isso especialmente para você. ❤️
+            </p>
 
-        <button id="botaoCarta" class="botao">
-            Abrir minha carta 💌
-        </button>
+            <button id="botaoCarta" class="botao" type="button">
+                Abrir minha carta 💌
+            </button>
+        </header>
 
         <section id="carta" class="secao escondida">
-            <div class="icone">💌</div>
+            <div class="icone" aria-hidden="true">💌</div>
 
             <h2>Uma cartinha para você</h2>
 
@@ -87,13 +76,13 @@
                 </p>
             </div>
 
-            <button id="botaoContador" class="botao botao-secundario">
+            <button id="botaoContador" class="botao" type="button">
                 Nossa data especial ✨
             </button>
         </section>
 
         <section id="contador" class="secao escondida">
-            <div class="icone">💗</div>
+            <div class="icone" aria-hidden="true">💗</div>
 
             <h2>Desde o nosso dia especial</h2>
 
@@ -128,84 +117,15 @@
                 para viver juntinhos. ❤️
             </p>
 
-            <button id="botaoVoltar" class="botao">
+            <button id="botaoVoltar" class="botao" type="button">
                 Voltar ao início 💕
             </button>
         </section>
 
         <footer>
             Feito com carinho, especialmente para você.
-            <span>♥</span>
+            <span aria-hidden="true">♥</span>
         </footer>
     </main>
-</body>
-</html>
-
-
-
-    <!-- Área dos corações flutuantes -->
-    <div id="coracoes"></div>
-
-    <!-- Conteúdo principal -->
-    <main>
-        <p class="etiqueta">
-            ✦ UMA SURPRESA FEITA COM CARINHO ✦
-        </p>
-
-        <h1>Tenho algo para te dizer ❤️</h1>
-
-        <div class="linha-brilhante"></div>
-
-        <p>
-            Às vezes, algumas pessoas aparecem na nossa vida
-            e tornam nossos dias mais especiais.
-        </p>
-
-        <p>
-            Preparei uma pequena surpresa para você.
-        </p>
-
-        <button id="botaoCarta">
-            Começar ❤️
-        </button>
-    </main>
-
-    <!-- Carta que aparece ao clicar no botão -->
-    <section id="carta" class="escondida">
-
-        <div class="coracao-carta">💗</div>
-
-        <p class="etiqueta">
-            UMA MENSAGEM ESPECIAL
-        </p>
-
-        <h2>Você é especial para mim</h2>
-
-        <p class="declaracao">
-            Eu queria encontrar um jeito diferente de te dizer
-            que gosto muito da sua presença.
-        </p>
-
-        <p class="declaracao">
-            Seu jeito, suas conversas e os momentos que
-            compartilhamos fazem diferença para mim.
-        </p>
-
-        <p class="assinatura">
-            Fiz tudo isso pensando em você. ❤️
-        </p>
-
-        <button id="botaoSurpresa">
-            Revelar surpresa 💌
-        </button>
-
-        <!-- A mensagem aparece letra por letra -->
-        <p id="mensagemSecreta" class="escondida"></p>
-
-    </section>
-
-    <!-- Conecta o arquivo JavaScript -->
-    <script src="script.js"></script>
-
 </body>
 </html>
